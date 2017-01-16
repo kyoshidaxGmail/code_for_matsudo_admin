@@ -1,0 +1,19 @@
+<% @title = 'ユーザ一覧' %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>作成日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= user.mail_address %></td>
+        <td><%= modify_time(user.created_at) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

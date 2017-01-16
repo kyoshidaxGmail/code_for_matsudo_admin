@@ -1,0 +1,28 @@
+<% @title = 'スキル一覧' %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>名前</th>
+      <th>説明</th>
+      <th>作成者</th>
+      <th>作成日</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @parent_skill_categories.each do |parent_skill_category| %>
+      <% child_skill_category = parent_skill_category.child_skill_categories.first %>
+      <%= render :partial => 'skills/index/skill_category_view', :locals => { :parent_skill_category => parent_skill_category, :child_skill_category => child_skill_category } %>
+      <%= render :partial => 'skills/index/skill_category_form', :locals => { :parent_skill_category => parent_skill_category } %>
+      <% if child_skill_category.try(:skills).present? %>
+        <% child_skill_category.skills.each do |skill| %>
+          <%= render :partial => 'skills/index/skill_view', :locals => { :skill => skill } %>
+          <%= render :partial => 'skills/index/skill_form', :locals => { :skill => skill, :parent_skill_category_id => parent_skill_category.id } %>
+        <% end %>
+      <% end %>
+      <%= render :partial => 'skills/index/skill_form', :locals => { :skill => Skill.new, :parent_skill_category_id => parent_skill_category.id } %>
+    <% end %>
+    <%= render :partial => 'skills/index/skill_category_form', :locals => { :parent_skill_category => ParentSkillCategory.new } %>
+  </tbody>
+</table>

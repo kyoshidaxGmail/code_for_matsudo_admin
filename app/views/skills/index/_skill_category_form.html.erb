@@ -1,0 +1,11 @@
+<% if parent_skill_category.new_record? %>
+  <tr id='<%= "parent_skill_category_view_new" %>' style="background-color: #ecf0f1;">
+    <td colspan="7" onclick='<%= "formShow('parent_skill_category','new');" %>' class='addCategory'>カテゴリ追加</td>
+  </tr>
+<% end %>
+<tr id='<%= parent_skill_category.new_record? ? "parent_skill_category_form_new" : "parent_skill_category_form_#{parent_skill_category.id}" %>' style='display: none;background-color: #ecf0f1;'>
+  <%= form_for parent_skill_category, :html => { :class => 'form-horizontal' } do |f| %>
+    <td colspan="5" style="padding: 8px 8px 6px;font-weight: bold"><%= f.text_field :name, :class => 'text_field', :style => 'width:100px;', :placeholder => '新規カテゴリ' %></td>
+    <td colspan="2"><%= f.submit '保存', :class => 'btn btn-primary noBtn' %></td>
+  <% end %>
+</tr>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render :partial => 'layouts/head/normal' %>
+    <%= stylesheet_link_tag "account_application", :media => "all" %>
+    <%= javascript_include_tag "account_application" %>
+  </head>
+  <body>
+    <%= render :partial => 'layouts/header/normal' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+      <%= render :partial => 'layouts/footer/normal' %>
+    </div> <!-- /container -->
+  </body>
+</html>

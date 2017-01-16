@@ -1,0 +1,38 @@
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <label class="control-label">名前</label>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">説明</label>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">メールアドレス</label>
+    <div class="controls">
+      <%= f.text_field :mail_address, :class => 'text_field' %>
+    </div>
+  </div>
+<% if false %>
+  <div>
+    <label class="control-label">住所</label>
+    <div class="controls">
+      <%= f.text_field :zip_address, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">電話番号</label>
+    <div class="controls">
+      <%= f.text_field :dial_number, :class => 'text_field' %>
+    </div>
+  </div>
+<% end %>
+  <div class="btnWrapper">
+    <%= f.submit '作成/更新', :class => 'btn btn-primary' %>
+    <%= link_to 'キャンセル',users_path, :class => 'btn btn-default' %>
+  </div>
+<% end %>

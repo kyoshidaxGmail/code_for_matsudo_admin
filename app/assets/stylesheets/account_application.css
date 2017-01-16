@@ -1,0 +1,9 @@
+/*
+  =require twitter-bootstrap-static/bootsnipp/google_style_login_extended
+*/
+.card {
+  margin-top: 0px;
+}
+.form-signin {
+  margin-bottom: 10px;
+}

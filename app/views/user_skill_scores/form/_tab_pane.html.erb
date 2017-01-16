@@ -1,0 +1,46 @@
+<% child_skill_category = parent_skill_category.child_skill_categories.first %>
+<div class="tab-pane<%= ' active' if is_active %>" id="tab<%= parent_skill_category.id %>">
+  <% if child_skill_category.present? %>
+    <% user_skill_scores = user.user_skill_scores %>
+    <% child_skill_category.skills.each do |skill| %>
+      <%
+        user_skill_score = UserSkillScore.where(skill_id: skill.id).where(user: user.id).first
+        user_skill_score = UserSkillScore.new if user_skill_score.blank?
+      %>
+      <p class="control-label"><%= skill.name %>：</p>
+      <br / class="pcHidden">
+      <%= form_for user_skill_score, :html => { :class => 'form-horizontal radioWrapper', :style => "display: inline-block;", :remote => true } do |f| %>
+        <%= hidden_field_tag :skill_id, skill.id %>
+        <%= hidden_field_tag :user_id, user.id %>
+        <div class="form-group" id='skill_<%= skill.id %>'>
+          <div class="radio-inline">
+            <input class='skillRadio' type="radio" value="0" name="skill_score" id="score_0" skill-id='<%= skill.id %>' <%= 'checked' if user_skill_score.score == 0 %>>
+            <label for="score_0">0</label>
+          </div>
+          <div class="radio-inline">
+            <input class='skillRadio' type="radio" value="1" name="skill_score" id="score_1" skill-id='<%= skill.id %>' <%= 'checked' if user_skill_score.score == 1 %>>
+            <label for="score_1">1</label>
+          </div>
+          <div class="radio-inline">
+            <input class='skillRadio' type="radio" value="2" name="skill_score" id="score_2" skill-id='<%= skill.id %>' <%= 'checked' if user_skill_score.score == 2 %>>
+            <label for="score_2">2</label>
+          </div>
+          <div class="radio-inline">
+            <input class='skillRadio' type="radio" value="3" name="skill_score" id="score_3" skill-id='<%= skill.id %>' <%= 'checked' if user_skill_score.score == 3 %>>
+            <label for="score_3">3</label>
+          </div>
+          <div class="radio-inline">
+            <input class='skillRadio' type="radio" value="4" name="skill_score" id="score_4" skill-id='<%= skill.id %>' <%= 'checked' if user_skill_score.score == 4 %>>
+            <label for="score_4">4</label>
+          </div>
+          <div class="radio-inline">
+            <input class='skillRadio' type="radio" value="5" name="skill_score" id="score_5" skill-id='<%= skill.id %>' <%= 'checked' if user_skill_score.score == 5 %>>
+            <label for="score_5">5</label>
+          </div>
+        </div>
+        <%= f.submit nil, :id => "skill_submit_#{skill.id}", :style => 'display:none;' %>
+      <% end %>
+      <br />
+    <% end %>
+  <% end %>
+</div>

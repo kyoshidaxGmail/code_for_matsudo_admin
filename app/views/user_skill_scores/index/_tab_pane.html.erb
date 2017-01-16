@@ -1,0 +1,13 @@
+<% child_skill_category = parent_skill_category.child_skill_categories.first %>
+<div class="tab-pane<%= ' active' if is_active %>" id="tab<%= parent_skill_category.id %>">
+  <% if child_skill_category.present? %>
+    <% user_skill_scores = user.user_skill_scores %>
+    <% child_skill_category.skills.each do |skill| %>
+      <% user_skill_score = user_skill_scores.where(:skill_id => skill.id).first %>
+      <% if user_skill_score.present? %>
+        <p class="control-label"><%= skill.name %>：<%= user_skill_score.score %></p>
+      <% end %>
+      <br />
+    <% end %>
+  <% end %>
+</div>

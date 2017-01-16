@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render :partial => 'layouts/head/normal' %>
+  </head>
+  <body>
+    <%= render :partial => 'layouts/header/normal' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+        <div class="col-lg-3">
+          <%= render :partial => 'layouts/sub_body/links' %>
+        </div><!--/span-->
+      </div><!--/row-->
+      <%= render :partial => 'layouts/footer/normal' %>
+    </div> <!-- /container -->
+  </body>
+</html>

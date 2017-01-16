@@ -1,0 +1,30 @@
+<% @title = 'ユーザ閲覧' %>
+<dl class="dl-horizontal">
+  <dt><strong>名前:</strong></dt>
+  <dd><%= @user.name %></dd>
+  <dt><strong>説明:</strong></dt>
+  <dd><%= @user.description %></dd>
+  <dt><strong>メールアドレス:</strong></dt>
+  <dd><%= @user.mail_address %></dd>
+<% if false %>
+  <dt><strong>住所:</strong></dt>
+  <dd><%= @user.zip_address %></dd>
+  <dt><strong>電話番号:</strong></dt>
+  <dd><%= @user.dial_number %></dd>
+<% end %>
+</dl>
+
+<div class="btnWrapper">
+  <% if @current_user == @user %>
+    <%= link_to '編集', edit_user_path(@user), :class => 'btn btn-default' %>
+    <%= link_to '削除', user_path(@user),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger' %>
+  <% end %>
+</div>
+<% if @current_user == @user %>
+  <%= render partial: '/user_skill_scores/form', locals: { user: @user } %>
+<% else %>
+  <%= render partial: '/user_skill_scores/index', locals: { user: @user } %>
+<% end %>

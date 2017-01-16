@@ -1,0 +1,30 @@
+<% child_skill_category = parent_skill_category.child_skill_categories.first %>
+<div class="usersAllSkill tab-pane<%= ' active' if is_active %>" id="tab<%= parent_skill_category.id %>">
+  <% if child_skill_category.present? %>
+    <% child_skill_category.skills.each do |skill| %>
+      <% user_skill_scores = skill.user_skill_scores %>
+      <p class="control-label"><%= skill.name %>：</p>
+      <br class="pcHidden">
+      <% for i in 0..5 do %>
+        <%
+          user_skill_scores_filtered = user_skill_scores.where(:score => i)
+          user_names = ''
+          user_skill_scores_filtered.each do |user_skill_score|
+            user_names += ' , ' if user_names != ''
+            user_names += user_skill_score.user.name
+          end
+          user_names = '該当なし' if user_names == ''
+        %>
+        <span class="score"><%= "#{i} - " %></span>
+        <span class="scoredUser<%= user_skill_scores_filtered.count > 0 ? '' : 0 %>">
+          <%= "#{user_skill_scores_filtered.count}人" %>
+          <% if user_skill_scores_filtered.count > 0 %>
+            <div class="scoredUsersTooltips"><%= user_names %></div>
+          <% end %>
+        </span>
+        <span class="score"> , </span>
+      <% end %>
+      <br />
+    <% end %>
+  <% end %>
+</div>

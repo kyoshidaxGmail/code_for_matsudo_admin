@@ -1,0 +1,1 @@
+//= require twitter/bootsnipp/google_style_login_extended

@@ -1,0 +1,17 @@
+<!--
+you can substitue the span of reauth email for a input with the email and
+include the remember me checkbox
+-->
+<div class="container">
+  <div class="card card-container">
+    <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <%= form_tag({ :action => 'do_sign_in', :controller => "users", :id => false }, :method => :put, class: 'form-signin') do %>
+      <%= text_field_tag :mail_address, params[:name], :class => 'form-control', :placeholder => 'メールアドレス' %>
+      <%= text_field_tag :password, params[:name], :class => 'form-control', :placeholder => 'パスワード' %>
+      <%= submit_tag 'Sign In', :class => "btn btn-lg btn-primary btn-block btn-signin", :id => "doSignIn", :data => { :role => 'none' } %>
+    <% end %><!-- /form -->
+    <%= link_to 'アカウントを作る', '/sign_up', :class => 'forgot-password' %>
+  </div><!-- /card-container -->
+</div><!-- /container -->

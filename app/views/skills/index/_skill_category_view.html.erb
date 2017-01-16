@@ -1,0 +1,12 @@
+<tr id='<%= "parent_skill_category_view_#{parent_skill_category.id}" %>' style="background-color: #ecf0f1;">
+  <td colspan="5" style="padding: 8px 8px 6px;font-weight: bold">カテゴリ：<%= parent_skill_category.name %></td>
+  <td colspan="2" style="padding: 6px 8px;" class="skillCategoryTd">
+    <%= link_to '編集', 'javascript:;', :class => 'btn btn-default btn-xs', :onclick => "formShow('parent_skill_category',#{parent_skill_category.id});" %>
+    <% if parent_skill_category.owner == @current_user && child_skill_category.try(:skills).blank? %>
+      <%= link_to '削除', parent_skill_category_path(parent_skill_category),
+        :method => :delete,
+        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+        :class => 'btn btn-xs btn-danger' %>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,29 @@
+<div class="tabbable tabs-below" id='userSkillScoreTab'>
+  0: ヤダ 1:自信なし 2:わからないけどやってみたい 3:多分いける 4:経験あり 5:プロっす
+  <ul class="nav nav-tabs">
+    <% user_skills = @current_user.skills %>
+    <% @parent_skill_categories.each_with_index do |parent_skill_category, i| %>
+      <% skills = parent_skill_category.child_skill_categories.first.try(:skills) %>
+      <% if skills.present? %>
+        <%
+          user_skills_count = 0
+          skills.map {| skill | user_skills_count += 1 if user_skills.include?(skill) }
+        %>
+        <li class="<%= 'active' if i == 0 %>">
+          <a href="#tab<%= parent_skill_category.id %>" data-toggle="tab"><%= "#{parent_skill_category.name} (#{user_skills_count} / #{skills.count})" %></a>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% @parent_skill_categories.each_with_index do |parent_skill_category, i| %>
+      <%= render partial: '/user_skill_scores/form/tab_pane', locals: { user: user, parent_skill_category: parent_skill_category, is_active: i == 0 } %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $('#userSkillScoreTab').on("change", ".skillRadio", function(event) {
+    $('#skill_submit_' + $(this).attr('skill-id')).click();
+  });
+</script>

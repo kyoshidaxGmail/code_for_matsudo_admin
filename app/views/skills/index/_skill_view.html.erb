@@ -1,0 +1,14 @@
+<tr id='<%= "skill_view_#{skill.id}" %>'>
+  <td></td>
+  <td><%= skill.name %></td>
+  <td><%= skill.description %></td>
+  <td><div class="ellipsis" style="width: 120px;"><%= skill.owner.try(:name) %></div></td>
+  <td><%= modify_time(skill.created_at) %></td>
+  <td>
+    <%= link_to '編集', 'javascript:;', :class => 'btn btn-default btn-xs', :onclick => "formShow('skill',#{skill.id});" %>
+    <%= link_to '削除', skill_path(skill),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-xs btn-danger' %>
+  </td>
+</tr>

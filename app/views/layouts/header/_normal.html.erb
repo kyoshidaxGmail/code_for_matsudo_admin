@@ -1,0 +1,25 @@
+<div class="navbar navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">CodeForMatsudoAdmin</a>
+    <span class="mobileHidden"><%= @title %></span>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Link1", "/path1" %></li>
+        <li><%= link_to "Link2", "/path2" %></li>
+        <li><%= link_to "Link3", "/path3" %></li>
+      </ul>
+    </div>
+    <br / class="pcHidden">
+    <% if @current_user.present? %>
+      <div class="navbar-brand" style = 'float:right;font-size: 16px'>
+        <span><%= @current_user.name %></span>
+        <span><%= link_to "サインアウト", "/users/do_sign_out", :method => 'put' %></span>
+      </div>
+    <% end %>
+  </div>
+</div>

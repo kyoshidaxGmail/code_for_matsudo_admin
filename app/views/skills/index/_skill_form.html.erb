@@ -1,0 +1,16 @@
+<% if skill.new_record? %>
+  <tr id='<%= "new_skill_view_#{parent_skill_category_id}" %>'>
+    <td colspan="7" class="addSkill" onclick='<%= "formShow('new_skill',#{parent_skill_category_id});" %>'>スキル追加</td>
+  </tr>
+<% end %>
+<tr id='<%= skill.new_record? ? "new_skill_form_#{parent_skill_category_id}" : "skill_form_#{skill.id}" %>' style='display: none;'>
+  <%= form_for skill, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= hidden_field_tag :parent_skill_category_id, parent_skill_category_id %>
+    <td></td>
+    <td><%= f.text_field :name, :class => 'text_field', :style => 'width:100px;', :placeholder => '新規スキル' %></td>
+    <td><%= f.text_area :description, :class => 'text_field', :style => 'width:100px;height: 28px;' %></td>
+    <td><div class="ellipsis" style="width: 100px;"><%= @current_user.try(:name) %></div></td>
+    <td></td>
+    <td><%= f.submit '保存', :class => 'btn btn-primary noBtn' %></td>
+  <% end %>
+</tr>

@@ -1,0 +1,178 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap_and_overrides
+ *= require_self
+ */
+.navbar {
+  padding-top: 16px;
+  min-height: 20px;
+}
+.navbar h1 {
+  font-size: 18px;
+}
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 20px;
+}
+.btnWrapper {
+  margin: 10px 0;
+}
+.btnWrapper .btn {
+  padding: 2px 15px;
+}
+.page-header {
+  margin: 0px;
+}
+.page-header h1 {
+  margin: 0px;
+  font-size: 20px;
+}
+.well.sidebar-nav h3 {
+  margin: 0px;
+  font-size: 20px;
+}
+.col-lg-3 li {
+  display: inline-block;
+}
+.tab-pane .control-label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-bottom: 0;
+  margin-right: 26px;
+}
+.radio-inline {
+  padding-top: 0px!important;
+}
+
+td .btn.btn-xs {
+  background-color: inherit;
+  border: initial;
+}
+
+td .btn.btn-default.btn-xs {
+  color: #95a5a6;
+}
+
+td .btn.btn-danger.btn-xs {
+  color: #e74c3c;
+}
+
+td.skillCategoryTd .btn.btn-xs {
+  float: right;
+  margin-right: 8px;
+}
+td.skillCategoryTd .btn.btn-default.btn-xs {
+  color: #18bc9c;
+}
+.radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+  margin-left: 10px;
+}
+
+.radioWrapper {
+  float: right;
+  margin-right: 40px;
+}
+.col-lg-9 .text_field {
+  width: 300px;
+}
+@media (min-width: 1024px) {
+  .col-lg-3 li {
+    display: block;
+  }
+}
+.mobileHidden {
+  display: none;
+}
+@media (min-width: 468px) {
+  .pcHidden {
+    display: none;
+  }
+  .mobileHidden {
+    display: inline-block;
+  }
+  .tab-pane .control-label {
+    width: 200px;
+  }
+  .form-horizontal {
+    float: none;
+    margin-right: none;
+  }
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btn.noBtn {
+  background: none;
+  border: none;
+  color: #95a5a6;
+  padding: 0;
+  font-size: 13px;
+}
+.addSkill {
+  cursor: pointer;
+  color: #95a5a6;
+  text-align: center;
+  font-size: 14px;
+  padding: 2px!important;
+}
+.addCategory {
+  cursor: pointer;
+  color: #18bc9c;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.usersAllSkill .score {
+  font-size: 14px;
+}
+
+.usersAllSkill .scoredUser {
+  cursor: pointer;
+  position:relative;
+  color: #18bc9c;
+}
+.usersAllSkill .scoredUser0 {
+  color: #95a5a6;
+}
+
+.scoredUsersTooltips {
+  display: none;
+  position: absolute;
+  top: 1.2em;
+  left: 0.3em;
+  z-index: 9999;
+  padding: 0.3em 0.5em;
+  color: #18bc9c;
+  background: #ecf0f1;
+  border-radius: 0.5em;
+  min-height: 20px;
+  min-width: 120px;
+}
+.scoredUsersTooltips:after {
+  width: 100%;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0.5em;
+  top: -8px;
+  border-top:8px solid transparent;
+  border-left:8px solid #ecf0f1;
+}
+.usersAllSkill .scoredUser:hover .scoredUsersTooltips {
+  display: block;
+}
